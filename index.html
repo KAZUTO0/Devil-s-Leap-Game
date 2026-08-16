@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DEVIL'S LEAP — A Platformer Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <canvas id="game" width="900" height="540"></canvas>
+
+    <div id="hud">
+        <div class="hud-row">
+            <div class="hud-item"><span class="hud-label">Level</span><span class="hud-value" id="levelNum">1</span></div>
+            <div class="hud-item"><span class="hud-label">Deaths</span><span class="hud-value" id="deathCount">0</span></div>
+            <div class="hud-item"><span class="hud-label">Time</span><span class="hud-value" id="timeCount">0.0</span></div>
+            <div class="hud-item"><span class="hud-label">Score</span><span class="hud-value" id="scoreCount">0</span></div>
+            <div class="hud-item"><span class="hud-label">Digs</span><span class="hud-value" id="digCount">3</span></div>
+        </div>
+        <div class="hud-row">
+            <div class="hud-item health"><span class="hud-label">Health</span><span class="hud-value" id="healthDisplay">♥♥♥</span></div>
+            <div class="hud-item shield-active hidden-hud" id="shieldIndicator"><span class="hud-label">Shield</span><span class="hud-value">ON</span></div>
+            <div class="hud-item speed-active hidden-hud" id="speedIndicator"><span class="hud-label">Speed</span><span class="hud-value" id="speedTimer">0.0</span></div>
+            <div class="hud-item life-active hidden-hud" id="lifeIndicator"><span class="hud-label">1-UP</span><span class="hud-value" id="lifeCount">0</span></div>
+        </div>
+    </div>
+
+    <button id="muteBtn">♪ SOUND: ON</button>
+
+    <div id="levelIntro">
+        <div class="level-tag">STAGE</div>
+        <div class="level-name" id="introName">First Steps</div>
+        <div class="level-hint" id="introHint">Walk. Jump. Survive.</div>
+    </div>
+    <div id="deathFlash"></div>
+
+    <div id="startScreen" class="overlay">
+        <div class="overlay-content">
+            <h1 class="title">DEVIL'S<br>LEAP</h1>
+            <p class="subtitle">A platformer that wants you dead</p>
+            <div class="controls">
+                <div class="control-row"><span class="key">A</span><span class="key">D</span><span class="control-desc">or ← → — Move</span></div>
+                <div class="control-row"><span class="key">SPACE</span><span class="control-desc">Jump (hold for higher)</span></div>
+                <div class="control-row"><span class="key">↓</span><span class="control-desc">Dig block beneath you (3 per level)</span></div>
+                <div class="control-row"><span class="key">R</span><span class="control-desc">Reset level</span></div>
+                <div class="control-row"><span class="key">M</span><span class="control-desc">Toggle sound</span></div>
+            </div>
+            <button id="startBtn" class="btn">BEGIN</button>
+            <p class="hint">Collect coins. Grab power-ups. The floor is not your friend.</p>
+        </div>
+    </div>
+
+    <div id="gameOverScreen" class="overlay hidden">
+        <div class="overlay-content">
+            <h1 class="title small" id="gameOverTitle">YOU DIED</h1>
+            <p class="subtitle" id="gameOverMsg">The devil grins.</p>
+            <div class="stats">
+                <div>Total Deaths: <span id="finalDeaths">0</span></div>
+                <div>Level Reached: <span id="finalLevel">1</span></div>
+                <div>Final Score: <span id="finalScore">0</span></div>
+                <div>Time: <span id="finalTime">0.0</span>s</div>
+            </div>
+            <button id="restartBtn" class="btn">TRY AGAIN</button>
+        </div>
+    </div>
+
+    <div id="levelCompleteScreen" class="overlay hidden">
+        <div class="overlay-content">
+            <h1 class="title small" style="color: var(--accent-3);">ESCAPED</h1>
+            <p class="subtitle" id="levelMsg">Onward to the next circle.</p>
+            <div class="stats">
+                <div>Level Score: <span id="levelScore">0</span></div>
+                <div>Total Score: <span id="totalScore">0</span></div>
+            </div>
+            <button id="nextBtn" class="btn">CONTINUE</button>
+        </div>
+    </div>
+
+    <div id="winScreen" class="overlay hidden">
+        <div class="overlay-content">
+            <h1 class="title small" style="color: var(--accent-2);">YOU WIN</h1>
+            <p class="subtitle">The devil is displeased.</p>
+            <div class="stats">
+                <div>Total Deaths: <span id="winDeaths">0</span></div>
+                <div>Total Time: <span id="winTime">0.0</span>s</div>
+                <div>Final Score: <span id="winScore">0</span></div>
+            </div>
+            <button id="playAgainBtn" class="btn">PLAY AGAIN</button>
+        </div>
+    </div>
+    <div class="credit">DEVIL'S LEAP · v2.0</div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
